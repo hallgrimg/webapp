@@ -1,11 +1,7 @@
-FROM registry.opensuse.org/opensuse/leap:15.3
+FROM nginx:latest
 
-RUN zypper ref && zypper install -y python3 python3-pip
+COPY . /usr/share/nginx/html/
 
-RUN mkdir /app
-WORKDIR /app
-COPY src/* /app/
-RUN pip3 install -r requirements.txt
+EXPOSE 8080
 
-EXPOSE 8081
-CMD ["python3", "/app/main.py"]
+CMD ["nginx", "-g", "daemon off;"]
