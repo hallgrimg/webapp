@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appwebapp
+  namespace: website
+spec:
+  replicas: 3
+  strategy: 
+    type: "RollingUpdate"
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - name: webapp
+        image: ttl.sh/wwwbs-v0.1.0:8h
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "64Mi"
+          limits:
+            cpu: "500m"
+            memory: "128Mi"
+        ports:
+          - name: http
+            containerPort: 80
+      readinessProbe:
+        httpGet:
+          path: /healthz
+          port: 8080
+          httpHeaders:
+          - name: Custom-Header
+            value: Awesome
+        initialDelaySeconds: 3
+        periodSeconds: 3
+      livenessProbe:
+        httpGet:
+          path: /healthz
+          port: 8080
+          httpHeaders:
+          - name: Custom-Header
+            value: Awesome
+        initialDelaySeconds: 3
+        periodSeconds: 3

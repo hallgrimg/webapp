@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: webapp
+  namespace: webapp
+  labels:
+    name: webapp
+    key1: "used by system"
+  annotations: 
+    describe: "This is an appthingamajig"
+    key1: "used by clients"
+spec:
+  containers:
+  - name: webapp
+    image: ttl.sh/wwwbs-v0.1.0:8h
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 80
