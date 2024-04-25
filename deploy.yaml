@@ -4,12 +4,12 @@ metadata:
   name: webapp
   namespace: website
 spec:
-  replicas: 3
-  strategy: 
-    type: "RollingUpdate"
   selector:
     matchLabels:
       app: webapp
+  replicas: 3
+  strategy: 
+    type: "RollingUpdate"
   template:
     metadata:
       labels:
@@ -19,15 +19,16 @@ spec:
       - name: webapp
         image: ttl.sh/wwwbs-v0.1.0:8h
         resources:
-          requests:
+          limits:
             cpu: "100m"
             memory: "64Mi"
-          limits:
+          requests:
             cpu: "500m"
             memory: "128Mi"
         ports:
-          - name: http
-            containerPort: 80
+        - name: http
+          containerPort: 80
+          protocol: TCP
         livenessProbe:
           httpGet:
             path: /
