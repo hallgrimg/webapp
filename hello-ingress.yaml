@@ -16,3 +16,10 @@ spec:
                 name: hello-world
                 port:
                   number: 8080
+          - path: /v2
+            pathType: Prefix
+            backend:
+              service:
+                name: hello-world2
+                port:
+                  number: 8080
