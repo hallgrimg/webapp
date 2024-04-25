@@ -20,11 +20,11 @@ spec:
         image: ttl.sh/wwwbs-v0.1.0:8h
         resources:
           limits:
-            cpu: "100m"
-            memory: "64Mi"
-          requests:
             cpu: "500m"
             memory: "128Mi"
+          requests:
+            cpu: "100m"
+            memory: "64Mi"
         ports:
         - name: http
           containerPort: 8080

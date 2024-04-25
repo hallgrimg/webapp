@@ -2,13 +2,13 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: webapp
-  namespace: webapp
+  namespace: website
   labels:
     name: webapp
-    key1: "used by system"
+    key1: "usedbysystem"
   annotations: 
     describe: "This is an appthingamajig"
-    key1: "used by clients"
+    key1: "usedbyclients"
 spec:
   containers:
   - name: webapp
