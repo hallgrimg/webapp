@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: ttl.sh/wwwbs-v0.1.0:8h
+        image: ghcr.io/go4clouds/webapp:v0.1.1
         resources:
           limits:
             cpu: "500m"
