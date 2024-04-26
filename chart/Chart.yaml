@@ -1,0 +1,11 @@
+apiVersion: v2
+name: webapp
+description: A Helm chart for Kubernetes for webapp thingy
+
+type: application
+
+# version of helm chart
+version: 0.1.0
+
+#version of our container image
+appVersion: "1.16.0"
