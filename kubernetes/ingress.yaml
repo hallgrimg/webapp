@@ -2,7 +2,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: webapp
-  namespace: webapp
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
 spec:
@@ -15,14 +14,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: hello-world
-                port:
-                  number: 8080
-          - path: /v2
-            pathType: Prefix
-            backend:
-              service:
-                name: hello-world2
+                name: webapp
                 port:
                   number: 8080
   tls:
