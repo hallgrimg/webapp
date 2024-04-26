@@ -7,3 +7,4 @@ service:
   protocol: TCP
   targetPort: 80
   type: ClusterIP
+  DNSName: web13.go4clouds.net

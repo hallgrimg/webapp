@@ -1,23 +1,23 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: webapp
+  name: {{ .Release.Name }}
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
 spec:
   ingressClassName: "nginx"
   rules:
-    - host: web13.go4clouds.net
+    - host: {{ .Values.service.DNSName }}
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: webapp
+                name: {{ .Release.Name }}
                 port:
-                  number: 8080
+                  number: {{ .Values.service.port }}
   tls:
     - hosts:
-      - web13.go4clouds.net
+      - {{ .Values.service.DNSName }}
       secretName: web13-go4clouds-net-tls
