@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webapp
+  name: {{ .Release.Name }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicas }}
   strategy: 
     type: "RollingUpdate"
   selector:
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: ttl.sh/wwwbs-v0.1.0:8h
+        image: {{ .Values.imageName}}:{{ .Chart.AppVersion}}
         resources:
           requests:
             cpu: "100m"

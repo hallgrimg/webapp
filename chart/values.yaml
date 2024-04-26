@@ -1,0 +1,4 @@
+replicas: 3
+
+imageName: "ttl.sh/wwwbs-v0.1.0"
+
