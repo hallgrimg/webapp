@@ -8,14 +8,14 @@ spec:
     type: "RollingUpdate"
   selector:
     matchLabels:
-      app: webapp
+      app: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: webapp
+        app: {{ .Release.Name }}
     spec:
       containers:
-      - name: webapp
+      - name: {{ .Release.Name }}
         image: {{ .Values.imageName}}:{{ .Chart.AppVersion}}
         resources:
           requests:

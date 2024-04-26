@@ -2,3 +2,8 @@ replicas: 3
 
 imageName: "ttl.sh/wwwbs-v0.1.0"
 
+service:
+  port: 8080
+  protocol: TCP
+  targetPort: 80
+  type: ClusterIP
